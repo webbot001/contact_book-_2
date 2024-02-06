@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact book - Edit Profile</title>
+</head>
+<body>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <table>
+
+            <tr>
+                <td>Username</td>
+                <td>
+                    <input type="text" name="un" value="{{ row.username }}">
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" name="em" value="{{ row.email }}">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" name="pss" value="{{ row.password }}" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Update" name="update">
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+    
+</body>
+</html> -->
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Contact Book - Login page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+
+        .wrapper
+        {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        body
+        {
+            background-image: url(../../static/images/bg_img.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Edit Profile</h3>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Your message was sent, thank you!
+                                    </div>
+                                    <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+
+                                        {% csrf_token %}
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="name">Username</label>
+                                                    <input type="text" class="form-control" name="un" id="name"
+                                                        placeholder="Name" value="{{ row.username }}">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="email">Contact No.</label>
+                                                    <input type="email" class="form-control" name="cnt" id="email"
+                                                        placeholder="Contact">
+                                                </div>
+                                            </div> -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Email</label>
+                                                    <input type="text" class="form-control" name="em" id="subject"
+                                                        placeholder="Email" value="{{ row.email }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Password</label>
+                                                    <input type="password" class="form-control" name="pss" id="subject"
+                                                        placeholder="Password" value="{{ row.password }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <font style="color: red;">{{ msg }}</font>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="submit" value="Update" name="update" class="btn btn-primary">
+                                                    <div class="submitting"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div class="info-wrap w-100 p-5 img" style="background-image: url(../../static/images/img.jpg);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+
+</body>
+
+</html>

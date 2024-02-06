@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact book - Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+
+    <!-- <link rel="stylesheet" href="../../static/css/style2.css"> -->
+    <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+
+</head>
+<body>
+
+    
+    <div class="pro">
+        <i class="fa-duotone fa-user"></i>
+        <h4>Logged as ,</h4>
+        <h1>{{ user }}</h1>
+        <h4>email : {{ email }}</h4>
+    </div>
+
+    <table class="tbl" cellspacing="0">
+        <tr class="head">
+            <td>Id</td>
+            <td>Added by</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>City</td>
+            <td>Gender</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+
+        {% for row in obj %}
+
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.added_by }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.contact }}</td>
+            <td>{{ row.city }}</td>
+            <td>{{ row.gender }}</td>
+            <td><a href="/update_contact/{{ row.id }}" class="ed"><i class="fa-duotone fa-pen-to-square"></i></a></td>
+            <td><a href="/remove_contact/{{ row.id }}" class="dl"><i class="fa-duotone fa-trash"></i></a></td>
+        </tr>
+
+        {% endfor %}
+    </table>
+    
+    <div class="btns">
+        <a href="/logout" class="btn"><i class="fa-duotone fa-right-from-bracket"></i></a>
+        <a href="/edit_pro" class="btn"><i class="fa-duotone fa-user-pen"></i></a>
+        <a href="/add_cnt" class="btn"><i class="fa-duotone fa-plus"></i></a>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact book - management</title>
+</head>
+<body>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" name="nm" value="{{ row.name }}">
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text" name="em" value="{{ row.email }}">
+            </td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>
+                <input type="tel" name="cnt" value="{{ row.contact }}">
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <select name="ct" >
+                    <option value="surat" {% if row.city == 'surat' %} selected {% endif %} >Surat</option>
+                    <option value="rajkot" {% if row.city == 'rajkot' %} selected {% endif %}  >Rajkot</option>
+                    <option value="mumbai" {% if row.city == 'mumbai' %} selected {% endif %}  >Mumbai</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" name="gn" value="male" {% if row.gender == 'male' %} checked {% endif %}>Male
+                <input type="radio" name="gn" value="female" {% if row.gender == 'female' %} checked {% endif %} >Female
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="add" value="{{ btn }}">
+            </td>
+        </tr>
+    </table>
+    <a href="/dashboard">Go to Dashboard</a>
+
+</form>
+    
+</body>
+</html> -->
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Contact Book - Login page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+
+        .wrapper
+        {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        body
+        {
+            background-image: url(../../static/images/bg_img.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        /* radio button css */
+        .hidden-toggles label
+        {
+            margin-bottom: 0;
+        }
+
+
+:root {
+  --accent: #46b5d1;
+  --accent-2: #EC2F4B;
+  --text: #003f66;
+  --text-hover: var(--accent);
+  --text-active: #FFFFFF;
+  --border-width: 0.125em;
+}
+
+.hidden-toggles {
+	position: relative;
+	border-radius: 999em;
+	overflow: hidden;
+    font-size: 14px;
+
+	height: 2.75em;
+	width: 20em;
+
+	display: flex;
+	flex-direction: row-reverse;
+
+	> * {
+		flex: 0 0 50%;
+	}
+
+	&:after {
+		content: "";
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		border: var(--border-width) solid var(--accent);
+		border-radius: 999em;
+		pointer-events: none;
+	}
+}
+
+.hidden-toggles__input {
+	display: none;
+
+	&:checked + .hidden-toggles__label {
+		background-color: var(--accent);
+		color: var(--text-active);
+
+		&:before {
+			opacity: 1;
+		}
+		
+	}
+	
+	&:nth-of-type(1) + label { order: 4 }
+	&:nth-of-type(2) + label { order: 3 }
+	&:nth-of-type(3) + label { order: 2 }
+	&:nth-of-type(4) + label { order: 1 }
+	
+	&:nth-of-type(1):checked,
+	&:nth-of-type(2):checked {
+		~ label:last-of-type {
+			margin-right: -0%;
+		}
+	}
+}
+
+.hidden-toggles__label {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s ease-out;
+     color: var(--text);
+
+	&:hover {
+		color: var(--text-hover);
+	}
+
+	&:nth-of-type(2) {
+		border-left: var(--border-width) solid var(--accent);
+		border-right: var(--border-width) solid var(--accent);
+	}
+	
+	&:last-of-type {
+		border-left: var(--border-width) solid var(--accent);
+	}
+}
+
+
+    </style>
+
+
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Login</h3>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Your message was sent, thank you!
+                                    </div>
+                                    <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+
+                                        {% csrf_token %}
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="name">Name</label>
+                                                    <input type="text" class="form-control" name="nm" id="name"
+                                                        placeholder="Name" value="{{ row.name }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Contact No.</label>
+                                                    <input type="tel" class="form-control" name="cnt" id="subject"
+                                                        placeholder="Contact" value="{{ row.contact }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="email">Email</label>
+                                                    <input type="text" class="form-control" name="em" id="email"
+                                                        placeholder="Email" value="{{ row.email }}" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Gender</label>
+                                                    <div class="hidden-toggles">
+				
+                                                        <input name="gn" type="radio" id="coloration-low" class="hidden-toggles__input"  {% if row.gender == 'male' %} checked {% endif %} value="male">
+                                                        <label for="coloration-low" class="hidden-toggles__label">Male</label>
+                                                        
+                                                        <input name="gn" type="radio" id="coloration-medium" class="hidden-toggles__input"  {% if row.gender == 'female' %} checked {% endif %} value="female">
+                                                        <label for="coloration-medium" class="hidden-toggles__label">Female</label>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="#">City</label>
+                                                    <select name="ct" class="form-control" id="message">
+                                                        <option value="surat"  {% if row.city == 'surat' %} selected {% endif %} >Surat</option>
+                                                        <option value="rajkot"  {% if row.city == 'rajkot' %} selected {% endif %} >Rajkot</option>
+                                                        <option value="mumbai"  {% if row.city == 'mumbai' %} selected {% endif %} >Mumbai</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="submit" value="{{btn}}" name="add" class="btn btn-primary">
+                                                    <div class="submitting"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div class="info-wrap w-100 p-5 img" style="background-image: url(../../static/images/img.jpg);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
+
+</body>
+
+</html>

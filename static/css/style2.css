@@ -1,0 +1,147 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body
+{
+  background-image: url(../images/bg_img.jpg);
+  background-size: cover;
+  font-family: 'montserrat';
+}
+h1 , h4
+{
+  color: white;
+}
+.tbl
+{
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  max-height: 600px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+.tbl td
+{
+  /* border: 1px solid red; */
+  text-align: center;
+  font-size: 13px;
+  padding: 12px 20px;
+  font-weight: 400;
+}
+.tbl tr:nth-child(odd)
+{
+  text-align: center;
+  border: 1px solid green;
+  background-color: rgb(238, 238, 238);
+}
+a
+{
+  color: grey;
+  text-decoration: none;
+}
+a.dl
+{
+  color: orangered;
+}
+a.ed
+{
+  color: dodgerblue;
+}
+.tbl tr:nth-child(even)
+{
+  background-color: white;
+}
+.tbl tr:nth-child(1)
+{
+  text-align: center;
+  background-color: #132125;
+  color: white;
+  font-size: 14px;
+}
+.tbl .head td
+{
+  font-weight: 500;
+}
+.btns
+{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn
+{
+  background-color: grey;
+}
+.btns a
+{
+  display: block;
+  background-color: #132125;
+  width: 60px;
+  height: 60px;
+  /* background-color: grey; */
+  border-radius: 150px;
+  transition: 0.3s;
+  position: relative;
+}
+.btns a i
+{
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.btns a:hover
+{
+  background-color: #3a94ab ;
+}
+.pro
+{
+  background-color: #132125;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  padding-top: 50px;
+  border-radius: 0 0 100px 0;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.pro *
+{
+  opacity: 0;
+}
+.pro i
+{
+  opacity: 1;
+  color: white;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  transition: 0.3s;
+}
+.pro:hover
+{
+  width: 250px;
+  height: 250px;
+  border-radius: 0 0 100% 0;
+}
+.pro:hover *
+{
+  opacity: 1;
+}
+.pro:hover i
+{
+  opacity: 0;
+}
